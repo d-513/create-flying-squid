@@ -13,9 +13,6 @@ const { Logger } = require("./Logger");
 let [dir] = args;
 async function main() {
   Logger.info("Thank you for using create-flying-squid");
-  Logger.warn(
-    "This will remove the directory you want to install the server in if it exists."
-  );
   const answers = await inquirer.prompt([
     {
       type: "list",
@@ -53,9 +50,6 @@ async function main() {
     spinner: dots,
     color: "blue",
   }).start();
-  if (await fs.exists(dir)) {
-    await fs.remove(dir);
-  }
   await git.download("github:dada513/flying-squid-template", dir);
   spinner.stop();
   Logger.success("Downloaded the server.");
