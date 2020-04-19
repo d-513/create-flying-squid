@@ -9,10 +9,11 @@ const exec = require("./run");
 const ora = require("ora");
 const { dots } = require("cli-spinners");
 const { Logger } = require("./Logger");
+const { version } = require("../package.json");
 
 let [dir] = args;
 async function main() {
-  Logger.info("Thank you for using create-flying-squid");
+  Logger.info(`Thank you for using create-flying-squid ${version}`);
   const answers = await inquirer.prompt([
     {
       type: "list",
