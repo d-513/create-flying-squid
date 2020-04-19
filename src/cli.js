@@ -79,11 +79,6 @@ async function main() {
   await Promise.all(promises);
   spinner.stop();
   Logger.success("Installed plugins.");
-  spinner = ora({
-    text: `Configuring the server...`,
-    spinner: dots,
-    color: "blue",
-  }).start();
   const config = require(`${dir}/config/config.json`);
   config.version = answers.version;
   config["online-mode"] = answers.onlinemode;
@@ -94,12 +89,12 @@ async function main() {
     JSON.stringify(config, null, 2),
     "utf8"
   );
-  spinner.stop();
   Logger.success("Server has been configured.");
   Logger.info("Setup complete, we recommend that you start the server now.");
   Logger.info("");
   Logger.info(`cd ${args[0]}`);
   Logger.info(`npm start`);
+  Logger.info("");
   Logger.warn(
     "Keep in mind that you need to configure the plugins you have choosen for them to work properly."
   );
